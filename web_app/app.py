@@ -21,9 +21,9 @@ def load_models():
     # model.compile(optimizer='adam', loss='binary_crossentropy')
     # models["scottlai/model_v2_fake_image_detection"] = model
     
-    model = from_pretrained_keras("poojakabber1997/ResNetDallE2Fakes")
+    model = from_pretrained_keras("Pinchu05/DeepFake_Detection")
     model.compile(optimizer='adam', loss='binary_crossentropy')
-    models["poojakabber1997/ResNetDallE2Fakes"] = model
+    models["Pinchu05/DeepFake_Detection"] = model
 
     return models
 
@@ -75,8 +75,8 @@ if content_loaded:
         #     channels_first = True
         #     model_key = "MobileNetV2 Model"
         # elif model_key == "poojakabber1997/ResNetDallE2Fakes":
-        if model_key == "poojakabber1997/ResNetDallE2Fakes":
-            input_shape = (180, 180)
+        if model_key == "Pinchu05/DeepFake_Detection":
+            input_shape = (150, 150)
             channels_first = False
             model_key = "ResNet Model"
 
@@ -150,7 +150,7 @@ if content_loaded:
         #     input_shape = (1, 3, 224, 224)
         # else:
         if model_choice.endswith("ResNet Model"):
-            model_key = "poojakabber1997/ResNetDallE2Fakes"
+            model_key = "Pinchu05/DeepFake_Detection"
             input_shape = (1, 3, 180, 180)
 
 
@@ -173,7 +173,7 @@ if content_loaded:
             col1, col2 = st.columns([2, 1])
             col1.image(input_image, use_column_width=True)
             col2.write("Prediction Results:")
-            model_key = "poojakabber1997/ResNetDallE2Fakes"
+            model_key = "Pinchu05/DeepFake_Detection"
             model_name, prediction, real_prob = get_prediction(uploaded_array, model_key, models)
 
             # Get the prediction probabilities
@@ -192,8 +192,3 @@ if content_loaded:
             else:
                 col2.markdown(f"### {fake_accuracy}")
                 col2.write(f"Real Probability: {fake_probability}")
-
-
-
-
-
